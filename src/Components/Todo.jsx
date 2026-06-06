@@ -1,6 +1,7 @@
-
+import React, { useRef, useState, useEffect } from 'react'
+import TodoItem from './TodoItem';
 let count = 0;
-import React, { useRef, useState } from 'react'
+
 const Todo = () => {
 
     const [todos, setTodos] = useState([]);
