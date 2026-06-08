@@ -17,8 +17,10 @@ const TodoItems = ({no,display,text,setTodos} )=>{
             break;
         }
        }
-        setTodos(data); // for update data in ui
+        setTodos(data);
 
+        localStorage.setItem("todos", JSON.stringify(data));
+          
  
 }
 
@@ -26,7 +28,7 @@ const TodoItems = ({no,display,text,setTodos} )=>{
         <div className="Todo-items flex justify-between items-center p-2 bg-gray-100 mb-2">
            <div className="todo-items-container flex" onClick={()=>{toggle(no)}}  >
              {display === "" ? <img className="w-[30px] " src={unchecked}/> : <img className="w-[30px] " src={checked}/>}
-             <span className="pl-16px font-22px">{text}</span>
+            <span className={`pl-16px font-22px ${display === "line-through" ? "line-through" : ""}`}>{text}</span>
             </div>
 
             <div className="">
