@@ -10,15 +10,17 @@ const Todo = () => {
 
     const add = ()=>{
        setTodos([...todos,{no:count++, text: inputRef.current.value, display: ""}])
-        inputRef.current.value = ""; 
+       inputRef.current.value = ""; 
+       localStorage.setItem("todos_count", count); // for save count in local storage
     }
     
     //useeffect means run this code after component render 
     // for get data from local storage   
     useEffect(()=>{
         const savedTodos = JSON.parse(localStorage.getItem("todos")) // json.parse is used to convert string to array/js object
-       setTodos(savedTodos);  
-   },[]); 
+       setTodos(savedTodos);
+       count = localStorage.getItem("todos_count")  
+   },[]); // emtry array means run this code only once when component mount 
 
     //for save data in local storage
     useEffect(()=>{
@@ -26,7 +28,7 @@ const Todo = () => {
            console.log(todos);
            localStorage.setItem("todos", JSON.stringify(todos)); // local storage only store string so we have to convert array/js object to string using json.stringify
        },1000)
-    },[todos])
+    },[todos]) // [todos] means run this code every time when todos state change
 
 
   return (
