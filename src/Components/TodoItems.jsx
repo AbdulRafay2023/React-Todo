@@ -2,7 +2,7 @@ import checked from './Assets/checked.png'
 import unchecked from './Assets/unchecked.png'
 import cross from './Assets/cross.png'
 
-const TodoItems = ({no,display,text} )=>{
+const TodoItems = ({no,display,text,setTodos} )=>{
    
     const toggle = (no)=>{
         let data = JSON.parse(localstorage.getItem("todos")) // all todos get from local storage and convert string to array/js object using json.parse
@@ -15,6 +15,7 @@ const TodoItems = ({no,display,text} )=>{
                   data[i].display === "" // for toggle line through
             }
         }
+        setTodos(data); // for update data in ui
     
     }   
 
