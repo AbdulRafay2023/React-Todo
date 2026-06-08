@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import TodoItesms from './TodoItems';
+import TodoItems from './TodoItems';
 let count = 0;
 
 const Todo = () => {
@@ -42,7 +42,7 @@ const Todo = () => {
 
         <div className="TodoList mt-4">
           {todos.map((item,index)=>{
-             return <TodoItesms key={index} setTodos={setTodos} no={item.no} display={item.display} text={item.text} />
+             return <TodoItems key={index} setTodos={setTodos} no={item.no} display={item.display} text={item.text} />
           })}
         </div>
 
